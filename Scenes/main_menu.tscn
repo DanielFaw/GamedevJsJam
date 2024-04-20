@@ -1,0 +1,168 @@
+[gd_scene load_steps=10 format=3 uid="uid://cldpltisjfguq"]
+
+[ext_resource type="Texture2D" uid="uid://ctirqxak7skwk" path="res://Images/StolenStuff/stolenbackground1.webp" id="1_b7imp"]
+[ext_resource type="Script" path="res://Scripts/UI/main_menu.gd" id="1_eq1mp"]
+[ext_resource type="Script" path="res://Scripts/UI/parallax_background.gd" id="1_poa3c"]
+[ext_resource type="AudioStream" uid="uid://c6wsjbil3s0go" path="res://Audio/mouserelease1.ogg" id="2_uput7"]
+[ext_resource type="AudioStream" uid="uid://b42hgsy6g3aeu" path="res://Audio/click4.ogg" id="3_ieshi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_8152o"]
+font_size = 50
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+shadow_size = 3
+shadow_color = Color(0.619608, 0, 0.592157, 1)
+shadow_offset = Vector2(3, -3)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_02jad"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qaxmg"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lqosd"]
+font_size = 32
+
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("play_btn", "options_btn", "back_btn", "main_ui", "options_ui", "fade_rect", "audio_player")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eq1mp")
+play_btn = NodePath("MarginContainer/ActualUi/VBoxContainer/MarginContainer/VBoxContainer/PlayButton")
+options_btn = NodePath("MarginContainer/ActualUi/VBoxContainer/MarginContainer/VBoxContainer/OptionsButton")
+back_btn = NodePath("MarginContainer/Options/Panel/VBoxContainer/OptionsGoBack")
+main_ui = NodePath("MarginContainer/ActualUi")
+options_ui = NodePath("MarginContainer/Options")
+fade_rect = NodePath("MarginContainer/ColorRect")
+audio_player = NodePath("AudioStreamPlayer")
+hover_sound = ExtResource("2_uput7")
+click_sound = ExtResource("3_ieshi")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="MarginContainer"]
+script = ExtResource("1_poa3c")
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="MarginContainer/ParallaxBackground"]
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/ParallaxBackground/ParallaxLayer"]
+position = Vector2(582, 327.5)
+scale = Vector2(0.971875, 1.43555)
+texture = ExtResource("1_b7imp")
+
+[node name="ActualUi" type="Control" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ActualUi"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Title" type="Label" parent="MarginContainer/ActualUi/VBoxContainer"]
+layout_mode = 2
+text = "Untitled Robot Game"
+label_settings = SubResource("LabelSettings_8152o")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Padding" type="Control" parent="MarginContainer/ActualUi/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/ActualUi/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/ActualUi/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="PlayButton" type="Button" parent="MarginContainer/ActualUi/VBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 75)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_02jad")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qaxmg")
+flat = true
+
+[node name="PlayLabel" type="Label" parent="MarginContainer/ActualUi/VBoxContainer/MarginContainer/VBoxContainer/PlayButton"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -22.5
+offset_right = 164.0
+offset_bottom = 22.5
+grow_vertical = 2
+text = "Play Game"
+label_settings = SubResource("LabelSettings_lqosd")
+
+[node name="OptionsButton" type="Button" parent="MarginContainer/ActualUi/VBoxContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(200, 75)
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_styles/pressed = SubResource("StyleBoxEmpty_02jad")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_qaxmg")
+flat = true
+
+[node name="PlayLabel2" type="Label" parent="MarginContainer/ActualUi/VBoxContainer/MarginContainer/VBoxContainer/OptionsButton"]
+layout_mode = 1
+anchors_preset = 4
+anchor_top = 0.5
+anchor_bottom = 0.5
+offset_top = -22.5
+offset_right = 123.0
+offset_bottom = 22.5
+grow_vertical = 2
+text = "Options"
+label_settings = SubResource("LabelSettings_lqosd")
+
+[node name="Options" type="Control" parent="MarginContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Panel" type="Panel" parent="MarginContainer/Options"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Options/Panel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -76.5
+offset_top = -25.0
+offset_right = 76.5
+offset_bottom = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Options/Panel/VBoxContainer"]
+layout_mode = 2
+text = "If only I had options to show..."
+
+[node name="OptionsGoBack" type="Button" parent="MarginContainer/Options/Panel/VBoxContainer"]
+layout_mode = 2
+text = "Menu"
+
+[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+color = Color(0.254902, 0.188235, 0.45098, 0)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://bbt5hqav8pqp2"]
+
+[ext_resource type="Script" path="res://Scripts/character.gd" id="1_74hjk"]
+[ext_resource type="PackedScene" uid="uid://d0dkjkqbp4vr" path="res://Prefabs/Components/animation_controller.tscn" id="2_knbgd"]
+[ext_resource type="PackedScene" uid="uid://p225ab6yj6vv" path="res://Prefabs/weapon_presenter.tscn" id="3_s8qpt"]
+[ext_resource type="PackedScene" uid="uid://bvm753n7y31mk" path="res://Prefabs/Components/health_component.tscn" id="5_p8slb"]
+[ext_resource type="Resource" uid="uid://dlbgcfp7lf0g5" path="res://CustomResources/player_stats.tres" id="6_xwf63"]
+[ext_resource type="Resource" uid="uid://di10vdpo0nofg" path="res://CustomResources/arm_cannon.tres" id="7_64ixh"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tfasy"]
+radius = 38.0
+height = 128.0
+
+[node name="Character" type="CharacterBody2D" node_paths=PackedStringArray("arm_cannon", "shoulder_point", "fire_point")]
+y_sort_enabled = true
+collision_layer = 4
+collision_mask = 10
+script = ExtResource("1_74hjk")
+arm_cannon = NodePath("AnimationController/Sprite2D/ShoulderPoint/ArmCannon")
+shoulder_point = NodePath("AnimationController/Sprite2D/ShoulderPoint")
+fire_point = NodePath("AnimationController/Sprite2D/ShoulderPoint/ArmCannon/FirePoint")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-5, -15)
+shape = SubResource("CapsuleShape2D_tfasy")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(-1, -77)
+position_smoothing_speed = 25.0
+
+[node name="AnimationController" parent="." instance=ExtResource("2_knbgd")]
+position = Vector2(0, -4)
+
+[node name="ShoulderPoint" type="Node2D" parent="AnimationController/Sprite2D" index="0"]
+position = Vector2(200, 0.000709534)
+rotation = 1.5708
+scale = Vector2(2.5, 2.5)
+
+[node name="ArmCannon" parent="AnimationController/Sprite2D/ShoulderPoint" node_paths=PackedStringArray("fire_point") instance=ExtResource("3_s8qpt")]
+position = Vector2(5, -11)
+rotation = 0.0226893
+scale = Vector2(0.45, 0.45)
+stats = ExtResource("7_64ixh")
+fire_point = NodePath("FirePoint")
+arm_cannon = true
+
+[node name="FirePoint" type="Node2D" parent="AnimationController/Sprite2D/ShoulderPoint/ArmCannon"]
+position = Vector2(371.111, 4.44448)
+rotation = 1.59349
+scale = Vector2(2.22222, 2.22222)
+
+[node name="health_component" parent="." instance=ExtResource("5_p8slb")]
+stats = ExtResource("6_xwf63")
+
+[node name="Area2D" parent="health_component" index="0"]
+collision_layer = 4
+collision_mask = 32
+
+[editable path="AnimationController"]
+[editable path="health_component"]

@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bygxk7spn52qh"]
+
+[ext_resource type="PackedScene" uid="uid://ceecwnqa6g50b" path="res://Prefabs/room_1.tscn" id="1_r5osp"]
+[ext_resource type="PackedScene" uid="uid://bbt5hqav8pqp2" path="res://Prefabs/character.tscn" id="2_lntti"]
+[ext_resource type="Script" path="res://Scripts/Utilities/bullet_container.gd" id="4_cbrnk"]
+[ext_resource type="PackedScene" uid="uid://tbx2o6bhmy4j" path="res://Prefabs/game_ui.tscn" id="5_2wtdc"]
+
+[node name="MainGame" type="Node2D"]
+
+[node name="room1" parent="." instance=ExtResource("1_r5osp")]
+z_index = -1
+position = Vector2(6, -2)
+
+[node name="Character" parent="." instance=ExtResource("2_lntti")]
+position = Vector2(-562, 30)
+scale = Vector2(0.5, 0.5)
+floor_max_angle = 1.86227
+
+[node name="BulletContainer" type="Node2D" parent="."]
+script = ExtResource("4_cbrnk")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="GameUI" parent="CanvasLayer" instance=ExtResource("5_2wtdc")]

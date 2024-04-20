@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://tcv5hebwycw1"]
+
+[ext_resource type="Texture2D" uid="uid://lp0yrdsg1g7b" path="res://Images/box.png" id="1_sjo3j"]
+
+[node name="Box" type="Node2D"]
+
+[node name="BottomSprite" type="Sprite2D" parent="."]
+position = Vector2(-1, -133)
+texture = ExtResource("1_sjo3j")
+region_rect = Rect2(0, 98.2134, 316, 190.787)
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 2
+collision_mask = 48
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(-53, -146)
+polygon = PackedVector2Array(-83, 64, -83, -33, 57, -118, 193, -38, 192, 70, 53, 148)

@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="EntityStats" load_steps=3 format=3 uid="uid://dlbgcfp7lf0g5"]
+
+[ext_resource type="Resource" uid="uid://di10vdpo0nofg" path="res://CustomResources/arm_cannon.tres" id="1_jmpoy"]
+[ext_resource type="Script" path="res://Scripts/entity_stats.gd" id="1_yatjp"]
+
+[resource]
+script = ExtResource("1_yatjp")
+health = 100
+move_speed = 10
+name = "Player"
+default_weapon = ExtResource("1_jmpoy")

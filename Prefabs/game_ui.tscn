@@ -1,0 +1,105 @@
+[gd_scene load_steps=6 format=3 uid="uid://tbx2o6bhmy4j"]
+
+[ext_resource type="Script" path="res://Scripts/UI/game_ui.gd" id="1_scy3k"]
+[ext_resource type="Texture2D" uid="uid://bytl35mon1xt5" path="res://Images/StolenStuff/blue_button00.png" id="2_gt6l1"]
+[ext_resource type="Texture2D" uid="uid://b6t3vcbpmpcm8" path="res://Images/StolenStuff/blue_button13.png" id="2_ylxgu"]
+[ext_resource type="Texture2D" uid="uid://dedvongwmh0np" path="res://Images/StolenStuff/image_transparent_Craiyon.png" id="3_qb0r6"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_c5gjv"]
+font_size = 30
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[node name="GameUI" type="Control" node_paths=PackedStringArray("player_hp_bar", "player_current_hp_label", "player_max_hp_label")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_scy3k")
+player_hp_bar = NodePath("MarginContainer/Control/TextureProgressBar")
+player_current_hp_label = NodePath("MarginContainer/Control/HBoxContainer/Label")
+player_max_hp_label = NodePath("MarginContainer/Control/HBoxContainer/Label3")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="Control" type="Control" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="MarginContainer/Control"]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -50.0
+offset_right = 250.0
+grow_vertical = 0
+size_flags_horizontal = 0
+size_flags_vertical = 8
+nine_patch_stretch = true
+stretch_margin_left = 3
+stretch_margin_top = 3
+stretch_margin_right = 3
+stretch_margin_bottom = 3
+texture_progress = ExtResource("2_gt6l1")
+
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/Control/TextureProgressBar"]
+z_index = -1
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_ylxgu")
+
+[node name="TextureRect2" type="TextureRect" parent="MarginContainer/Control/TextureProgressBar"]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = -6.0
+offset_top = -64.0
+offset_right = 476.0
+offset_bottom = 803.0
+grow_vertical = 0
+scale = Vector2(0.06, 0.06)
+texture = ExtResource("3_qb0r6")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Control"]
+custom_minimum_size = Vector2(250, 50)
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -50.0
+offset_right = 250.0
+grow_vertical = 0
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/Control/HBoxContainer"]
+layout_mode = 2
+text = "100"
+label_settings = SubResource("LabelSettings_c5gjv")
+
+[node name="Label2" type="Label" parent="MarginContainer/Control/HBoxContainer"]
+layout_mode = 2
+text = "/"
+label_settings = SubResource("LabelSettings_c5gjv")
+
+[node name="Label3" type="Label" parent="MarginContainer/Control/HBoxContainer"]
+layout_mode = 2
+text = "100"
+label_settings = SubResource("LabelSettings_c5gjv")

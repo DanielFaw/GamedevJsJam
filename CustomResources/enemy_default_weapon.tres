@@ -1,0 +1,21 @@
+[gd_resource type="Resource" script_class="WeaponResource" load_steps=2 format=3 uid="uid://dqo8yyujyrawq"]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/base_weapon.gd" id="1_fjsbq"]
+
+[resource]
+script = ExtResource("1_fjsbq")
+sprite_path = "res://icon.svg"
+damage = 10.0
+name = "Test Weapon"
+attack_cooldown = 2.0
+bullet_sprite_path = "res://icon.svg"
+bullet_damage = 10.0
+bullet_speed = 1.0
+bullet_lifetime = 1.0
+bullet_sprite_size = 1.0
+bullet_area_size = 1.0
+bullet_pierce = 0
+bullet_explodes = false
+bullet_explode_damage = 1.0
+bullet_explode_range = 1.0
+is_enemy_bullet = true
