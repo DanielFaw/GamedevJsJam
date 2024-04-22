@@ -4,15 +4,14 @@
 
 [resource]
 script = ExtResource("1_t7h5e")
-sprite_path = "res://Images/basicatk.png"
-damage = 10.0
+sprite_path = "res://icon.svg"
 name = "Test Weapon"
 attack_cooldown = 0.2
-bullet_sprite_path = "res://icon.svg"
-bullet_damage = 1.0
+bullet_sprite_path = "res://Images/StolenStuff/squareWhite.png"
+bullet_damage = 10.0
 bullet_speed = 1200.0
-bullet_lifetime = 3.0
-bullet_sprite_size = 0.2
+bullet_lifetime = 5.0
+bullet_sprite_size = 1.0
 bullet_area_size = 1.0
 bullet_pierce = 0
 bullet_explodes = false

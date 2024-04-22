@@ -20,7 +20,6 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta : float) -> void:
-	is_firing = Input.is_action_pressed("firing")
 	cooldown += delta
 	if cooldown >= weapon_stats.attack_cooldown && is_firing:
 		fire.emit()

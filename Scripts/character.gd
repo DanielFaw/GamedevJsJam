@@ -20,6 +20,7 @@ func _init() -> void:
 	pass
 
 func _ready() -> void:
+	health_comp.took_damage.connect(took_damage)
 	pass
 
 func _physics_process(delta : float) -> void:
@@ -39,7 +40,7 @@ func _physics_process(delta : float) -> void:
 
 func _process(delta : float) -> void:
 	$Camera2D.offset = aim_dir
-
+	arm_cannon.weapon_cooldown_manager.is_firing = Input.is_action_pressed("firing")
 	arm_cannon.set_aim_dir(shoulder_point.global_position.direction_to(get_global_mouse_position()).normalized())
 	pass
 
@@ -50,4 +51,10 @@ func _input(input : InputEvent) -> void:
 		var mult := 2.0
 		aim_dir = Vector2(sqrt(temp.position.x * mult) * mult, sqrt(temp.position.y * mult) * mult)
 		player_anim.aim_dir = aim_dir.normalized()
+	pass
+
+func took_damage(src : DamageSource) -> void:
+	$HitSound.play()
+	modulate = Color.SKY_BLUE
+	await get_tree().create_tween().tween_property(self, "modulate", Color.WHITE, 0.25).finished
 	pass

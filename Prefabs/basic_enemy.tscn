@@ -1,0 +1,55 @@
+[gd_scene load_steps=10 format=3 uid="uid://br346iwxhtlmd"]
+
+[ext_resource type="Script" path="res://Scripts/basic_enemy.gd" id="1_a6nd4"]
+[ext_resource type="PackedScene" uid="uid://bvm753n7y31mk" path="res://Prefabs/Components/health_component.tscn" id="1_tedc4"]
+[ext_resource type="PackedScene" uid="uid://p225ab6yj6vv" path="res://Prefabs/weapon_presenter.tscn" id="2_iyc7x"]
+[ext_resource type="Resource" uid="uid://dkj41m5ucxljo" path="res://CustomResources/basic_enemy_stats.tres" id="2_w18gq"]
+[ext_resource type="Resource" uid="uid://dqo8yyujyrawq" path="res://CustomResources/enemy_default_weapon.tres" id="3_60f2c"]
+[ext_resource type="PackedScene" uid="uid://d0dkjkqbp4vr" path="res://Prefabs/Components/animation_controller.tscn" id="4_8qweg"]
+[ext_resource type="Texture2D" uid="uid://dfsbos5vvhsut" path="res://Images/flarespritesheet.png" id="6_5adpm"]
+[ext_resource type="Texture2D" uid="uid://d6bvm6s2hslx" path="res://Images/enemyspritesheet.png" id="7_xj6yi"]
+[ext_resource type="PackedScene" uid="uid://rnr35o7hqctj" path="res://Prefabs/weapon_flash.tscn" id="9_u35u1"]
+
+[node name="BasicEnemy" type="Node2D" node_paths=PackedStringArray("flash")]
+script = ExtResource("1_a6nd4")
+flash = NodePath("AnimationController/Sprite2D/WeaponFlash")
+
+[node name="health_component" parent="." instance=ExtResource("1_tedc4")]
+stats = ExtResource("2_w18gq")
+
+[node name="Area2D" parent="health_component" index="0"]
+collision_layer = 8
+collision_mask = 16
+
+[node name="CollisionShape2D" parent="health_component/Area2D" index="0"]
+position = Vector2(2, -7)
+
+[node name="WeaponPresenter" parent="." node_paths=PackedStringArray("fire_point") instance=ExtResource("2_iyc7x")]
+visible = false
+scale = Vector2(0.3, 0.3)
+stats = ExtResource("3_60f2c")
+fire_point = NodePath("../AnimationController/Sprite2D/FirePoint")
+
+[node name="Sprite2D" parent="WeaponPresenter" index="0"]
+position = Vector2(3.33332, 216.667)
+rotation = 1.55509
+texture = ExtResource("6_5adpm")
+hframes = 2
+
+[node name="AnimationController" parent="." instance=ExtResource("4_8qweg")]
+is_player = false
+
+[node name="Sprite2D" parent="AnimationController" index="0"]
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("7_xj6yi")
+
+[node name="FirePoint" type="Node2D" parent="AnimationController/Sprite2D" index="0"]
+position = Vector2(-0.000955677, 264)
+
+[node name="WeaponFlash" parent="AnimationController/Sprite2D" index="1" instance=ExtResource("9_u35u1")]
+position = Vector2(7.99906, 260)
+rotation = 1.5708
+
+[editable path="health_component"]
+[editable path="WeaponPresenter"]
+[editable path="AnimationController"]

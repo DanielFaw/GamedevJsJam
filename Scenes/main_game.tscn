@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://bygxk7spn52qh"]
+[gd_scene load_steps=6 format=3 uid="uid://bygxk7spn52qh"]
 
 [ext_resource type="PackedScene" uid="uid://ceecwnqa6g50b" path="res://Prefabs/room_1.tscn" id="1_r5osp"]
 [ext_resource type="PackedScene" uid="uid://bbt5hqav8pqp2" path="res://Prefabs/character.tscn" id="2_lntti"]
 [ext_resource type="Script" path="res://Scripts/Utilities/bullet_container.gd" id="4_cbrnk"]
 [ext_resource type="PackedScene" uid="uid://tbx2o6bhmy4j" path="res://Prefabs/game_ui.tscn" id="5_2wtdc"]
+[ext_resource type="PackedScene" uid="uid://br346iwxhtlmd" path="res://Prefabs/basic_enemy.tscn" id="5_f6u5g"]
 
 [node name="MainGame" type="Node2D"]
 
@@ -22,3 +23,12 @@ script = ExtResource("4_cbrnk")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="GameUI" parent="CanvasLayer" instance=ExtResource("5_2wtdc")]
+
+[node name="BasicEnemy" parent="." instance=ExtResource("5_f6u5g")]
+position = Vector2(325, -25)
+
+[node name="BasicEnemy2" parent="." instance=ExtResource("5_f6u5g")]
+position = Vector2(-613, 722)
+
+[node name="BasicEnemy3" parent="." instance=ExtResource("5_f6u5g")]
+position = Vector2(110, 487)

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://rnr35o7hqctj"]
+
+[ext_resource type="Script" path="res://Scripts/Weapons/weapon_flash.gd" id="1_i6ytr"]
+[ext_resource type="Texture2D" uid="uid://dfsbos5vvhsut" path="res://Images/flarespritesheet.png" id="2_amdyt"]
+
+[node name="WeaponFlash" type="Node2D" node_paths=PackedStringArray("sprite")]
+script = ExtResource("1_i6ytr")
+sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_amdyt")
+hframes = 2

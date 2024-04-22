@@ -18,12 +18,11 @@ var fire_dir := Vector2.ZERO
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var sound : AudioStreamPlayer2D = $AudioStreamPlayer2D
 
+signal attacked()
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	if !arm_cannon:
-		sprite.texture = load(stats.sprite_path)
-	else:
+	if arm_cannon:
 		frame_speed *= (stats.attack_cooldown / 0.5)
 	weapon_cooldown_manager = DefaultWeapon.new(stats)
 	weapon_cooldown_manager.fire.connect(attack)
@@ -55,6 +54,7 @@ func set_aim_dir(dir : Vector2) -> void:
 
 func attack() -> void:
 	#Spawn the projectile defined in the stats
+	attacked.emit()
 	var bullet := DefaultBullet.new(stats, fire_point.global_position, fire_dir)
 	bullet_container.add_child(bullet)
 	sound.play()

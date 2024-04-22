@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bbt5hqav8pqp2"]
+[gd_scene load_steps=9 format=3 uid="uid://bbt5hqav8pqp2"]
 
 [ext_resource type="Script" path="res://Scripts/character.gd" id="1_74hjk"]
 [ext_resource type="PackedScene" uid="uid://d0dkjkqbp4vr" path="res://Prefabs/Components/animation_controller.tscn" id="2_knbgd"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bvm753n7y31mk" path="res://Prefabs/Components/health_component.tscn" id="5_p8slb"]
 [ext_resource type="Resource" uid="uid://dlbgcfp7lf0g5" path="res://CustomResources/player_stats.tres" id="6_xwf63"]
 [ext_resource type="Resource" uid="uid://di10vdpo0nofg" path="res://CustomResources/arm_cannon.tres" id="7_64ixh"]
+[ext_resource type="AudioStream" uid="uid://vywsnp5hxjer" path="res://Audio/playerHitSound.ogg" id="7_y8cod"]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_tfasy"]
 radius = 38.0
@@ -13,7 +14,7 @@ height = 128.0
 
 [node name="Character" type="CharacterBody2D" node_paths=PackedStringArray("arm_cannon", "shoulder_point", "fire_point")]
 y_sort_enabled = true
-collision_layer = 4
+collision_layer = 0
 collision_mask = 10
 script = ExtResource("1_74hjk")
 arm_cannon = NodePath("AnimationController/Sprite2D/ShoulderPoint/ArmCannon")
@@ -51,10 +52,15 @@ scale = Vector2(2.22222, 2.22222)
 
 [node name="health_component" parent="." instance=ExtResource("5_p8slb")]
 stats = ExtResource("6_xwf63")
+invuln_time = 0.25
 
 [node name="Area2D" parent="health_component" index="0"]
 collision_layer = 4
 collision_mask = 32
+
+[node name="HitSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("7_y8cod")
+volume_db = 7.0
 
 [editable path="AnimationController"]
 [editable path="health_component"]
