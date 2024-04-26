@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RoomDefinition" load_steps=3 format=3 uid="uid://b8eqqitm8i6nl"]
+
+[ext_resource type="PackedScene" uid="uid://dvoh53105e7bx" path="res://Prefabs/Rooms/hellway.tscn" id="1_bme83"]
+[ext_resource type="Script" path="res://CustomResources/Definitions/room_definition.gd" id="1_xeg3l"]
+
+[resource]
+script = ExtResource("1_xeg3l")
+room = ExtResource("1_bme83")
+spawn_room = false
+top_door = true
+left_door = true
+right_door = true
+bottom_door = true
