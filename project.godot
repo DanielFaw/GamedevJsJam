@@ -32,6 +32,10 @@ window/size/resizable=false
 window/stretch/mode="viewport"
 window/stretch/scale=0.5
 
+[dotnet]
+
+project/assembly_name="HappyRobotsHelpingPeople (HRHP)"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/awesome_scene_manager/plugin.cfg")
