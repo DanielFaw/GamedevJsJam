@@ -6,7 +6,7 @@ var all_rooms : Array[RoomDefinition]
 #A vector2i:roomdefinition key/value pair
 var generated_map := {}
 
-func generate(rms : Array[RoomDefinition], count : int = 10) -> void:
+func generate(rms : Array[RoomDefinition], count : int = 25) -> void:
 	all_rooms = rms
 	
 	#var spawn := all_rooms.find()
@@ -75,7 +75,8 @@ func generate(rms : Array[RoomDefinition], count : int = 10) -> void:
 			generated_map[pos] = all_rooms.filter(is_right_cap).pick_random()
 		#Main Entry
 		elif top_neighbor && bottom_neighbor && left_neighbor && right_neighbor:
-			generated_map[pos] = all_rooms.filter(is_big).pick_random()
+			var room : RoomDefinition = all_rooms.filter(is_big).pick_random()
+			generated_map[pos] = room
 		#Hallways
 		elif top_neighbor && bottom_neighbor && !left_neighbor && !right_neighbor:
 			generated_map[pos] = all_rooms.filter(tb_hallway).pick_random()

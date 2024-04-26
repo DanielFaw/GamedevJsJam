@@ -6,9 +6,9 @@
 script = ExtResource("1_t7h5e")
 sprite_path = "res://icon.svg"
 name = "Test Weapon"
-attack_cooldown = 0.3
+attack_cooldown = 0.25
 bullet_sprite_path = "res://Images/StolenStuff/squareWhite.png"
-bullet_damage = 10.0
+bullet_damage = 34.0
 bullet_speed = 2400.0
 bullet_lifetime = 5.0
 bullet_sprite_size = 2.0

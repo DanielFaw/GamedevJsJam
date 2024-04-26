@@ -46,6 +46,7 @@ func _ready() -> void:
 		room_container.add_child(room)
 		if !room_def.spawn_room:
 			room.spawn_enemies()
+		continue
 		#room.spawn_enemies()
 		#Spawn doors at each location
 		if room_def.top_door:

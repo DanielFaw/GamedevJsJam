@@ -35,9 +35,8 @@ func _ready() -> void:
 func play_game() -> void:
 	#Fade to black then switch to main game scene?
 	fade_rect.mouse_filter = Control.MOUSE_FILTER_STOP
-	if OS.is_debug_build():
-		get_tree().create_tween().tween_property(music, "volume_db", -80, 1.5)
-		await create_tween().tween_property(fade_rect, "color:a", 1, 1.5).finished
+	get_tree().create_tween().tween_property(music, "volume_db", -80, 1.5)
+	await create_tween().tween_property(fade_rect, "color:a", 1, 1.5).finished
 	SceneManager.change_scene("res://Scenes/main_game.tscn")
 	pass
 
