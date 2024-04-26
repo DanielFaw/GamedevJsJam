@@ -3,9 +3,14 @@ class_name Room
 
 @onready var tilemap : TileMap = $TileMap
 
-var room_rect : Rect2i
-
+func _init() -> void:
+	
+	pass
 
 func _ready() -> void:
-	room_rect = tilemap.get_used_rect()
+	
+	pass
+
+func _process(delta : float) -> void:
+	
 	pass

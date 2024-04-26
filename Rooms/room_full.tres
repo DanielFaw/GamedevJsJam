@@ -6,6 +6,7 @@
 [resource]
 script = ExtResource("1_vw20k")
 room = ExtResource("1_uas5p")
+spawn_room = true
 top_door = true
 left_door = true
 right_door = true

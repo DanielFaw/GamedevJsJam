@@ -1,25 +1,27 @@
-[gd_scene load_steps=10 format=3 uid="uid://cldpltisjfguq"]
+[gd_scene load_steps=15 format=3 uid="uid://cldpltisjfguq"]
 
 [ext_resource type="Script" path="res://Scripts/UI/main_menu.gd" id="1_eq1mp"]
 [ext_resource type="Script" path="res://Scripts/UI/parallax_background.gd" id="1_poa3c"]
 [ext_resource type="AudioStream" uid="uid://c6wsjbil3s0go" path="res://Audio/mouserelease1.ogg" id="2_uput7"]
 [ext_resource type="AudioStream" uid="uid://b42hgsy6g3aeu" path="res://Audio/click4.ogg" id="3_ieshi"]
-[ext_resource type="Texture2D" uid="uid://bacbb0ctfftdh" path="res://Images/dope_ass_title_screen.png" id="5_e7iqb"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_8152o"]
-font_size = 50
-outline_size = 5
-outline_color = Color(0, 0, 0, 1)
-shadow_size = 3
-shadow_color = Color(0.619608, 0, 0.592157, 1)
-shadow_offset = Vector2(3, -3)
+[ext_resource type="Texture2D" uid="uid://cj88igyr3ugpt" path="res://Images/MainMenu/0.png" id="5_uwfo0"]
+[ext_resource type="Texture2D" uid="uid://q5g11u08j37t" path="res://Images/MainMenu/1.png" id="6_etdfc"]
+[ext_resource type="Texture2D" uid="uid://conrmiatvon0u" path="res://Images/MainMenu/2.png" id="7_m1lqy"]
+[ext_resource type="Texture2D" uid="uid://ocb31uwamiv3" path="res://Images/MainMenu/3.png" id="8_5dvxh"]
+[ext_resource type="FontFile" uid="uid://dfoqaajc57idx" path="res://Fonts/dogicapixelbold.ttf" id="9_wc6xg"]
+[ext_resource type="FontFile" uid="uid://befgwuj5tj3fx" path="res://Fonts/dogicapixel.ttf" id="10_cfhcm"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_02jad"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qaxmg"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_lqosd"]
-font_size = 32
+font = ExtResource("10_cfhcm")
+font_size = 50
+
+[sub_resource type="LabelSettings" id="LabelSettings_8152o"]
+font = ExtResource("9_wc6xg")
+font_size = 60
 
 [node name="MainMenu" type="Control" node_paths=PackedStringArray("play_btn", "options_btn", "back_btn", "main_ui", "options_ui", "fade_rect", "audio_player")]
 layout_mode = 3
@@ -34,7 +36,7 @@ options_btn = NodePath("MarginContainer/ActualUi/VBoxContainer/MarginContainer/V
 back_btn = NodePath("MarginContainer/Options/Panel/VBoxContainer/OptionsGoBack")
 main_ui = NodePath("MarginContainer/ActualUi")
 options_ui = NodePath("MarginContainer/Options")
-fade_rect = NodePath("MarginContainer/ColorRect")
+fade_rect = NodePath("ColorRect")
 audio_player = NodePath("AudioStreamPlayer")
 hover_sound = ExtResource("2_uput7")
 click_sound = ExtResource("3_ieshi")
@@ -46,6 +48,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 15
+theme_override_constants/margin_top = 15
+theme_override_constants/margin_right = 15
+theme_override_constants/margin_bottom = 15
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="MarginContainer"]
 script = ExtResource("1_poa3c")
@@ -53,9 +59,33 @@ script = ExtResource("1_poa3c")
 [node name="ParallaxLayer" type="ParallaxLayer" parent="MarginContainer/ParallaxBackground"]
 
 [node name="Sprite2D" type="Sprite2D" parent="MarginContainer/ParallaxBackground/ParallaxLayer"]
-position = Vector2(880, 804)
+position = Vector2(1104, 681)
 scale = Vector2(1.75, 1.75)
-texture = ExtResource("5_e7iqb")
+texture = ExtResource("5_uwfo0")
+
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="MarginContainer/ParallaxBackground"]
+motion_scale = Vector2(1.5, 1.5)
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/ParallaxBackground/ParallaxLayer2"]
+position = Vector2(1104, 681)
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("6_etdfc")
+
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="MarginContainer/ParallaxBackground"]
+motion_scale = Vector2(5, 5)
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/ParallaxBackground/ParallaxLayer3"]
+position = Vector2(1104, 622)
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("7_m1lqy")
+
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="MarginContainer/ParallaxBackground"]
+motion_scale = Vector2(7, 7)
+
+[node name="Sprite2D" type="Sprite2D" parent="MarginContainer/ParallaxBackground/ParallaxLayer4"]
+position = Vector2(1104, 622)
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("8_5dvxh")
 
 [node name="ActualUi" type="Control" parent="MarginContainer"]
 layout_mode = 2
@@ -67,13 +97,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Title" type="Label" parent="MarginContainer/ActualUi/VBoxContainer"]
-layout_mode = 2
-text = "Untitled Robot Game"
-label_settings = SubResource("LabelSettings_8152o")
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Padding" type="Control" parent="MarginContainer/ActualUi/VBoxContainer"]
 custom_minimum_size = Vector2(0, 150)
@@ -126,6 +149,20 @@ grow_vertical = 2
 text = "Options"
 label_settings = SubResource("LabelSettings_lqosd")
 
+[node name="Padding2" type="Control" parent="MarginContainer/ActualUi/VBoxContainer"]
+custom_minimum_size = Vector2(0, 150)
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Title" type="Label" parent="MarginContainer/ActualUi/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 8
+text = "Hppy Rbts Hlpng Ppl!"
+label_settings = SubResource("LabelSettings_8152o")
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="Options" type="Control" parent="MarginContainer"]
 visible = false
 layout_mode = 2
@@ -160,9 +197,14 @@ text = "If only I had options to show..."
 layout_mode = 2
 text = "Menu"
 
-[node name="ColorRect" type="ColorRect" parent="MarginContainer"]
-layout_mode = 2
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 mouse_filter = 2
 color = Color(0, 0, 0, 0)
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

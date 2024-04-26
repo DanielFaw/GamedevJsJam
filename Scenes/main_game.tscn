@@ -1,23 +1,20 @@
-[gd_scene load_steps=8 format=3 uid="uid://bygxk7spn52qh"]
+[gd_scene load_steps=7 format=3 uid="uid://bygxk7spn52qh"]
 
 [ext_resource type="Script" path="res://Scripts/main_game.gd" id="1_hxc3m"]
-[ext_resource type="PackedScene" uid="uid://ceecwnqa6g50b" path="res://Prefabs/Rooms/room_full.tscn" id="1_r5osp"]
 [ext_resource type="PackedScene" uid="uid://bbt5hqav8pqp2" path="res://Prefabs/character.tscn" id="2_lntti"]
 [ext_resource type="Script" path="res://Scripts/Utilities/bullet_container.gd" id="4_cbrnk"]
 [ext_resource type="PackedScene" uid="uid://tbx2o6bhmy4j" path="res://Prefabs/game_ui.tscn" id="5_2wtdc"]
 [ext_resource type="PackedScene" uid="uid://br346iwxhtlmd" path="res://Prefabs/basic_enemy.tscn" id="5_f6u5g"]
 [ext_resource type="Script" path="res://Scripts/level_spawner.gd" id="7_r3uue"]
 
-[node name="MainGame" type="Node2D"]
+[node name="MainGame" type="Node2D" node_paths=PackedStringArray("room_container", "door_container")]
 script = ExtResource("1_hxc3m")
+room_container = NodePath("Rooms")
+door_container = NodePath("Doors")
 
 [node name="Rooms" type="Node2D" parent="."]
 
-[node name="room1" parent="Rooms" instance=ExtResource("1_r5osp")]
-
-[node name="room2" parent="Rooms" instance=ExtResource("1_r5osp")]
-position = Vector2(1, -5120)
-rotation = 3.14159
+[node name="Doors" type="Node2D" parent="."]
 
 [node name="Character" parent="." instance=ExtResource("2_lntti")]
 position = Vector2(-357, -1307)

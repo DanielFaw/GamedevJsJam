@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="HappyRobotsHelpingPeople (HRHP)"
-run/main_scene="res://Scenes/main_game.tscn"
+run/main_scene="res://Scenes/main_menu.tscn"
 config/features=PackedStringArray("4.2", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -76,7 +76,8 @@ firing={
 2d_physics/layer_4="Enemies"
 2d_physics/layer_5="PlayerProjectile"
 2d_physics/layer_6="EnemyProjectile"
+2d_physics/layer_7="Door"
 
 [rendering]
 
-textures/canvas_textures/default_texture_filter=0
+environment/defaults/default_clear_color=Color(0.223529, 0.321569, 0.360784, 1)

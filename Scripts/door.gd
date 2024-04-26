@@ -6,12 +6,12 @@ class_name Door
 @onready var col : CollisionShape2D = $StaticBody2D/CollisionShape2D
 
 func _ready() -> void:
-	sprite.visible = false
-	col.disabled = true
+	#sprite.visible = false
+	#col.disabled = true
 	#await get_tree().create_timer(2).timeout
 	close()
-	await get_tree().create_timer(2).timeout
-	open()
+	#await get_tree().create_timer(2).timeout
+	#open()
 	pass
 
 func open() -> void:
@@ -30,3 +30,13 @@ func close() -> void:
 	col.disabled = false
 	pass
 
+
+
+func _on_area_2d_body_entered(body : Node2D) -> void:
+	open()
+	pass # Replace with function body.
+
+
+func _on_area_2d_body_exited(body : Node2D) -> void:
+	close()
+	pass # Replace with function body.

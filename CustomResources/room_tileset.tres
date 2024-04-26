@@ -1,6 +1,11 @@
-[gd_resource type="TileSet" load_steps=3 format=3 uid="uid://cgfomoucrd0hw"]
+[gd_resource type="TileSet" load_steps=8 format=3 uid="uid://cgfomoucrd0hw"]
 
 [ext_resource type="Texture2D" uid="uid://bewm1jo2xu5fy" path="res://Images/Tileset.png" id="1_xt2mn"]
+[ext_resource type="Texture2D" uid="uid://lp0yrdsg1g7b" path="res://Images/box.png" id="2_cexk3"]
+[ext_resource type="Texture2D" uid="uid://badktt00gxwln" path="res://Images/boxsm.png" id="3_mtw0x"]
+
+[sub_resource type="TileMapPattern" id="TileMapPattern_4qnwr"]
+tile_data = PackedInt32Array(0, 1, 0, 65536, 1, 1, 1, 65537, 0, 65537, 65537, 1)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_43rbc"]
 texture = ExtResource("1_xt2mn")
@@ -165,6 +170,48 @@ texture_region_size = Vector2i(256, 256)
 3:3/0/physics_layer_1/angular_velocity = 0.0
 3:3/0/physics_layer_1/polygon_0/points = PackedVector2Array(-128, -16, 128, -12, 128, 128, -128, 128)
 
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_egun5"]
+texture = ExtResource("2_cexk3")
+texture_region_size = Vector2i(256, 256)
+0:0/next_alternative_id = 2
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128)
+0:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_1/angular_velocity = 0.0
+1:0/next_alternative_id = 2
+1:0/0 = 0
+1:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_0/angular_velocity = 0.0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128)
+1:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+1:0/0/physics_layer_1/angular_velocity = 0.0
+0:1/next_alternative_id = 2
+0:1/0 = 0
+0:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_0/angular_velocity = 0.0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128)
+0:1/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+0:1/0/physics_layer_1/angular_velocity = 0.0
+1:1/next_alternative_id = 2
+1:1/0 = 0
+1:1/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_0/angular_velocity = 0.0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128)
+1:1/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+1:1/0/physics_layer_1/angular_velocity = 0.0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_gakio"]
+texture = ExtResource("3_mtw0x")
+texture_region_size = Vector2i(256, 256)
+0:0/0 = 0
+0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-128, -128, 128, -128, 128, 128, -128, 128)
+0:0/0/physics_layer_1/linear_velocity = Vector2(0, 0)
+0:0/0/physics_layer_1/angular_velocity = 0.0
+
 [resource]
 tile_size = Vector2i(256, 256)
 physics_layer_0/collision_layer = 2
@@ -172,3 +219,6 @@ physics_layer_0/collision_mask = 48
 physics_layer_1/collision_layer = 2
 physics_layer_1/collision_mask = 0
 sources/0 = SubResource("TileSetAtlasSource_43rbc")
+sources/1 = SubResource("TileSetAtlasSource_egun5")
+sources/2 = SubResource("TileSetAtlasSource_gakio")
+pattern_0 = SubResource("TileMapPattern_4qnwr")

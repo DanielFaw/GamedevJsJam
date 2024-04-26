@@ -15,7 +15,7 @@ height = 128.0
 [node name="Character" type="CharacterBody2D" node_paths=PackedStringArray("arm_cannon", "shoulder_point", "fire_point")]
 y_sort_enabled = true
 collision_layer = 0
-collision_mask = 10
+collision_mask = 74
 script = ExtResource("1_74hjk")
 arm_cannon = NodePath("AnimationController/Sprite2D/ShoulderPoint/ArmCannon")
 stats = ExtResource("6_xwf63")

@@ -16,4 +16,4 @@ region_rect = Rect2(79, 94, 2003, 261)
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_vto1c")
-volume_db = -5.288
+volume_db = -10.0
