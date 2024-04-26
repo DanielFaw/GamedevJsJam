@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://cldpltisjfguq"]
+[gd_scene load_steps=16 format=3 uid="uid://cldpltisjfguq"]
 
 [ext_resource type="Script" path="res://Scripts/UI/main_menu.gd" id="1_eq1mp"]
 [ext_resource type="Script" path="res://Scripts/UI/parallax_background.gd" id="1_poa3c"]
@@ -10,6 +10,7 @@
 [ext_resource type="Texture2D" uid="uid://ocb31uwamiv3" path="res://Images/MainMenu/3.png" id="8_5dvxh"]
 [ext_resource type="FontFile" uid="uid://dfoqaajc57idx" path="res://Fonts/dogicapixelbold.ttf" id="9_wc6xg"]
 [ext_resource type="FontFile" uid="uid://befgwuj5tj3fx" path="res://Fonts/dogicapixel.ttf" id="10_cfhcm"]
+[ext_resource type="AudioStream" uid="uid://c8fe78logjjge" path="res://Audio/Space Cadet.ogg" id="11_0yumo"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_02jad"]
 
@@ -23,7 +24,7 @@ font_size = 50
 font = ExtResource("9_wc6xg")
 font_size = 60
 
-[node name="MainMenu" type="Control" node_paths=PackedStringArray("play_btn", "options_btn", "back_btn", "main_ui", "options_ui", "fade_rect", "audio_player")]
+[node name="MainMenu" type="Control" node_paths=PackedStringArray("play_btn", "options_btn", "back_btn", "main_ui", "options_ui", "fade_rect", "audio_player", "music")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -40,6 +41,7 @@ fade_rect = NodePath("ColorRect")
 audio_player = NodePath("AudioStreamPlayer")
 hover_sound = ExtResource("2_uput7")
 click_sound = ExtResource("3_ieshi")
+music = NodePath("MusicPlayer")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -198,6 +200,11 @@ layout_mode = 2
 text = "Menu"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="MusicPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("11_0yumo")
+volume_db = -30.0
+autoplay = true
 
 [node name="ColorRect" type="ColorRect" parent="."]
 layout_mode = 1

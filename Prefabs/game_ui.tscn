@@ -1,16 +1,24 @@
-[gd_scene load_steps=6 format=3 uid="uid://tbx2o6bhmy4j"]
+[gd_scene load_steps=10 format=3 uid="uid://tbx2o6bhmy4j"]
 
 [ext_resource type="Script" path="res://Scripts/UI/game_ui.gd" id="1_scy3k"]
 [ext_resource type="Texture2D" uid="uid://bytl35mon1xt5" path="res://Images/StolenStuff/blue_button00.png" id="2_gt6l1"]
 [ext_resource type="Texture2D" uid="uid://b6t3vcbpmpcm8" path="res://Images/StolenStuff/blue_button13.png" id="2_ylxgu"]
 [ext_resource type="Texture2D" uid="uid://8momp5dpv7dy" path="res://Images/battery.png" id="4_jfe6s"]
+[ext_resource type="FontFile" uid="uid://befgwuj5tj3fx" path="res://Fonts/dogicapixel.ttf" id="5_kqir6"]
+[ext_resource type="AudioStream" uid="uid://cihvc75ib2cjx" path="res://Audio/Cyberpunk Moonlight Sonata v2.mp3" id="6_yjkf4"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_c5gjv"]
 font_size = 30
 outline_size = 2
 outline_color = Color(0, 0, 0, 1)
 
-[node name="GameUI" type="Control" node_paths=PackedStringArray("player_hp_bar", "player_current_hp_label", "player_max_hp_label", "health_container")]
+[sub_resource type="LabelSettings" id="LabelSettings_lc584"]
+font = ExtResource("5_kqir6")
+
+[sub_resource type="LabelSettings" id="LabelSettings_b12r6"]
+font = ExtResource("5_kqir6")
+
+[node name="GameUI" type="Control" node_paths=PackedStringArray("player_hp_bar", "player_current_hp_label", "player_max_hp_label", "health_container", "game_over_container", "ftb", "game_over_text", "game_over_button", "music")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -22,6 +30,21 @@ player_hp_bar = NodePath("MarginContainer/HealthBar/TextureProgressBar")
 player_current_hp_label = NodePath("MarginContainer/HealthBar/HBoxContainer/Label")
 player_max_hp_label = NodePath("MarginContainer/HealthBar/HBoxContainer/Label3")
 health_container = NodePath("MarginContainer/HealthBar")
+game_over_container = NodePath("MarginContainer/GameOver")
+ftb = NodePath("ColorRect")
+game_over_text = NodePath("MarginContainer/GameOver/VBoxContainer")
+game_over_button = NodePath("MarginContainer/GameOver/VBoxContainer/Button")
+music = NodePath("AudioStreamPlayer")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -105,3 +128,57 @@ label_settings = SubResource("LabelSettings_c5gjv")
 layout_mode = 2
 text = "100"
 label_settings = SubResource("LabelSettings_c5gjv")
+
+[node name="GameOver" type="Control" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/GameOver"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control2" type="Control" parent="MarginContainer/GameOver/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/GameOver/VBoxContainer"]
+layout_mode = 2
+text = "This happy robot couldn't help everyone."
+label_settings = SubResource("LabelSettings_lc584")
+horizontal_alignment = 1
+
+[node name="Label2" type="Label" parent="MarginContainer/GameOver/VBoxContainer"]
+layout_mode = 2
+text = ":("
+label_settings = SubResource("LabelSettings_lc584")
+horizontal_alignment = 1
+
+[node name="Control" type="Control" parent="MarginContainer/GameOver/VBoxContainer"]
+custom_minimum_size = Vector2(0, 200)
+layout_mode = 2
+
+[node name="Button" type="Button" parent="MarginContainer/GameOver/VBoxContainer"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="Label" type="Label" parent="MarginContainer/GameOver/VBoxContainer/Button"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Back to main menu"
+label_settings = SubResource("LabelSettings_b12r6")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("6_yjkf4")
+volume_db = -40.0
+autoplay = true

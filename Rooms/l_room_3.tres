@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="RoomDefinition" load_steps=3 format=3 uid="uid://btbtg7krsrwfc"]
+
+[ext_resource type="PackedScene" uid="uid://cylttukmbsqlj" path="res://Prefabs/Rooms/l_room_2.tscn" id="1_ua5j5"]
+[ext_resource type="Script" path="res://CustomResources/Definitions/room_definition.gd" id="2_h4wpl"]
+
+[resource]
+script = ExtResource("2_h4wpl")
+room = ExtResource("1_ua5j5")
+spawn_room = false
+top_door = false
+left_door = true
+right_door = false
+bottom_door = true

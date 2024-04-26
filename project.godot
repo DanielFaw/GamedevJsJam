@@ -72,11 +72,13 @@ firing={
 
 2d_physics/layer_1="World"
 2d_physics/layer_2="Wall"
-2d_physics/layer_3="Player"
-2d_physics/layer_4="Enemies"
+2d_physics/layer_3="PlayerHitbox"
+2d_physics/layer_4="EnemyHitbox"
 2d_physics/layer_5="PlayerProjectile"
 2d_physics/layer_6="EnemyProjectile"
 2d_physics/layer_7="Door"
+2d_physics/layer_8="EnemyMovement"
+2d_physics/layer_9="PlayerMovement"
 
 [rendering]
 

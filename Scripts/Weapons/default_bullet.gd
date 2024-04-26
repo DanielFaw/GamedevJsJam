@@ -17,6 +17,7 @@ var explode_damage := 1.0
 var explode_range := 1.0
 var lifetime := 1.0
 
+var bullet_mask : int
 
 
 func _init(stats : WeaponResource, pos : Vector2, dir : Vector2) -> void:
@@ -60,7 +61,7 @@ func _ready() -> void:
 	area.body_entered.connect(hit)
 	area.area_entered.connect(hit)
 	add_child(area)
-	
+	bullet_mask = area.collision_mask
 	global_position = spawn_pos
 	sprite.look_at(global_position + aim_dir)
 	pass # Replace with function body.
@@ -80,12 +81,24 @@ func _physics_process(delta : float) -> void:
 
 func hit(body : Node2D) -> void:
 	if body.get_parent().has_signal("took_damage"):
+		if pierce < 0: return
 		var src := DamageSource.new(weapon_resource, self, damage)
 		body.get_parent().take_damage(src)
+		dealt_damage()
 		pass
 	else:
 		#Hit a wall, die
 		hit_wall()
+	pass
+
+func dealt_damage() -> void:
+	pierce -= 1
+	if pierce < 0:
+		hit_entity()
+	pass
+
+func hit_entity() -> void:
+	die_action()
 	pass
 
 func hit_wall() -> void:
@@ -105,7 +118,15 @@ func die_action() -> void:
 	pass
 
 func try_explode() -> void:
+	return
 	if explodes:
-		
+		var area := Area2D.new()
+		var shape := CollisionShape2D.new()
+		var circle := CircleShape2D.new()
+		circle.radius = explode_range
+		shape.shape = circle
+		area.collision_mask = bullet_mask
+		area.add_child(shape)
+		add_child(area)
 		pass
 	pass

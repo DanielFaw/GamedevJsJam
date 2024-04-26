@@ -12,8 +12,7 @@ extends Control
 #@export var unhover_sound : AudioStream
 @export var click_sound : AudioStream
 
-
-
+@export var music : AudioStreamPlayer
 
 #Tween stuff
 var grow_size := Vector2(1.2, 1.2)
@@ -30,13 +29,14 @@ func _ready() -> void:
 	play_btn.pressed.connect(play_game)
 	options_btn.pressed.connect(show_options)
 	back_btn.pressed.connect(hide_options)
-	
+	get_tree().create_tween().tween_property(music, "volume_db", -10, 3.0)
 	pass # Replace with function body.
 
 func play_game() -> void:
 	#Fade to black then switch to main game scene?
 	fade_rect.mouse_filter = Control.MOUSE_FILTER_STOP
-	if !OS.is_debug_build():
+	if OS.is_debug_build():
+		get_tree().create_tween().tween_property(music, "volume_db", -80, 1.5)
 		await create_tween().tween_property(fade_rect, "color:a", 1, 1.5).finished
 	SceneManager.change_scene("res://Scenes/main_game.tscn")
 	pass

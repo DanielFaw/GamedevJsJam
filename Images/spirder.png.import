@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cdsqy0rcxsl6"
-path="res://.godot/imported/single.png-2d166456445fd5b5a8c6f184cc871d21.ctex"
+uid="uid://cres61il5ia0p"
+path="res://.godot/imported/spirder.png-d2a75fc381f2072c16293354ef503d31.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Images/StolenStuff/single.png"
-dest_files=["res://.godot/imported/single.png-2d166456445fd5b5a8c6f184cc871d21.ctex"]
+source_file="res://Images/spirder.png"
+dest_files=["res://.godot/imported/spirder.png-d2a75fc381f2072c16293354ef503d31.ctex"]
 
 [params]
 

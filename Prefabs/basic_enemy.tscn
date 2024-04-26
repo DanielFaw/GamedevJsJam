@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://br346iwxhtlmd"]
+[gd_scene load_steps=11 format=3 uid="uid://br346iwxhtlmd"]
 
 [ext_resource type="Script" path="res://Scripts/basic_enemy.gd" id="1_a6nd4"]
 [ext_resource type="PackedScene" uid="uid://bvm753n7y31mk" path="res://Prefabs/Components/health_component.tscn" id="1_tedc4"]
@@ -10,8 +10,16 @@
 [ext_resource type="Texture2D" uid="uid://d6bvm6s2hslx" path="res://Images/enemyspritesheet.png" id="7_xj6yi"]
 [ext_resource type="PackedScene" uid="uid://rnr35o7hqctj" path="res://Prefabs/weapon_flash.tscn" id="9_u35u1"]
 
-[node name="BasicEnemy" type="Node2D" node_paths=PackedStringArray("flash")]
+[sub_resource type="CircleShape2D" id="CircleShape2D_y6gan"]
+radius = 96.1301
+
+[node name="BasicEnemy" type="CharacterBody2D" node_paths=PackedStringArray("flash")]
+collision_layer = 128
+collision_mask = 386
 script = ExtResource("1_a6nd4")
+attack_distance = 1500.0
+move_distance = 2500.0
+target_distance = 900.0
 flash = NodePath("AnimationController/Sprite2D/WeaponFlash")
 
 [node name="health_component" parent="." instance=ExtResource("1_tedc4")]
@@ -50,6 +58,10 @@ position = Vector2(-8.88171, 421.746)
 [node name="WeaponFlash" parent="AnimationController/Sprite2D" index="1" instance=ExtResource("9_u35u1")]
 position = Vector2(-0.881722, 423.746)
 rotation = 1.5708
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-77, 0)
+shape = SubResource("CircleShape2D_y6gan")
 
 [editable path="health_component"]
 [editable path="WeaponPresenter"]
