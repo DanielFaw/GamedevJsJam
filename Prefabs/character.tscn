@@ -18,6 +18,7 @@ collision_layer = 0
 collision_mask = 10
 script = ExtResource("1_74hjk")
 arm_cannon = NodePath("AnimationController/Sprite2D/ShoulderPoint/ArmCannon")
+stats = ExtResource("6_xwf63")
 shoulder_point = NodePath("AnimationController/Sprite2D/ShoulderPoint")
 fire_point = NodePath("AnimationController/Sprite2D/ShoulderPoint/ArmCannon/FirePoint")
 
@@ -27,10 +28,11 @@ shape = SubResource("CapsuleShape2D_tfasy")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(-1, -77)
+zoom = Vector2(0.75, 0.75)
 position_smoothing_speed = 25.0
 
 [node name="AnimationController" parent="." instance=ExtResource("2_knbgd")]
-position = Vector2(0, -4)
+scale = Vector2(0.5, 0.5)
 
 [node name="ShoulderPoint" type="Node2D" parent="AnimationController/Sprite2D" index="0"]
 position = Vector2(200, 0.000709534)
@@ -57,6 +59,9 @@ invuln_time = 0.25
 [node name="Area2D" parent="health_component" index="0"]
 collision_layer = 4
 collision_mask = 32
+
+[node name="CollisionShape2D" parent="health_component/Area2D" index="0"]
+position = Vector2(-2, -25)
 
 [node name="HitSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("7_y8cod")

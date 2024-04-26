@@ -6,4 +6,4 @@
 script = ExtResource("1_hx5s4")
 health = 100
 move_speed = 10
-name = "Player"
+name = "Rifle Bot"

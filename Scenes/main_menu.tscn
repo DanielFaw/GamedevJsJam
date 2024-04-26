@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://cldpltisjfguq"]
 
-[ext_resource type="Texture2D" uid="uid://ctirqxak7skwk" path="res://Images/StolenStuff/stolenbackground1.webp" id="1_b7imp"]
 [ext_resource type="Script" path="res://Scripts/UI/main_menu.gd" id="1_eq1mp"]
 [ext_resource type="Script" path="res://Scripts/UI/parallax_background.gd" id="1_poa3c"]
 [ext_resource type="AudioStream" uid="uid://c6wsjbil3s0go" path="res://Audio/mouserelease1.ogg" id="2_uput7"]
 [ext_resource type="AudioStream" uid="uid://b42hgsy6g3aeu" path="res://Audio/click4.ogg" id="3_ieshi"]
+[ext_resource type="Texture2D" uid="uid://bacbb0ctfftdh" path="res://Images/dope_ass_title_screen.png" id="5_e7iqb"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_8152o"]
 font_size = 50
@@ -53,9 +53,9 @@ script = ExtResource("1_poa3c")
 [node name="ParallaxLayer" type="ParallaxLayer" parent="MarginContainer/ParallaxBackground"]
 
 [node name="Sprite2D" type="Sprite2D" parent="MarginContainer/ParallaxBackground/ParallaxLayer"]
-position = Vector2(582, 327.5)
-scale = Vector2(0.971875, 1.43555)
-texture = ExtResource("1_b7imp")
+position = Vector2(880, 804)
+scale = Vector2(1.75, 1.75)
+texture = ExtResource("5_e7iqb")
 
 [node name="ActualUi" type="Control" parent="MarginContainer"]
 layout_mode = 2
@@ -163,6 +163,6 @@ text = "Menu"
 [node name="ColorRect" type="ColorRect" parent="MarginContainer"]
 layout_mode = 2
 mouse_filter = 2
-color = Color(0.254902, 0.188235, 0.45098, 0)
+color = Color(0, 0, 0, 0)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]

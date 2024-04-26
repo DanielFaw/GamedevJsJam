@@ -6,12 +6,12 @@
 script = ExtResource("1_fjsbq")
 sprite_path = "res://Images/flarespritesheet.png"
 name = "Test Weapon"
-attack_cooldown = 2.0
+attack_cooldown = 3.0
 bullet_sprite_path = "res://Images/StolenStuff/squareWhite.png"
 bullet_damage = 8.0
-bullet_speed = 1000.0
+bullet_speed = 2000.0
 bullet_lifetime = 5.0
-bullet_sprite_size = 1.0
+bullet_sprite_size = 2.0
 bullet_area_size = 1.0
 bullet_pierce = 0
 bullet_explodes = false

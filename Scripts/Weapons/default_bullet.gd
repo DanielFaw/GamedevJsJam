@@ -80,7 +80,6 @@ func _physics_process(delta : float) -> void:
 
 func hit(body : Node2D) -> void:
 	if body.get_parent().has_signal("took_damage"):
-		print("oof!")
 		var src := DamageSource.new(weapon_resource, self, damage)
 		body.get_parent().take_damage(src)
 		pass

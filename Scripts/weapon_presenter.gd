@@ -46,6 +46,10 @@ func _process(delta : float) -> void:
 		last_frame += 1
 		if last_frame < 6:
 			sprite.frame = last_frame
+		else:
+			fired = false
+			last_frame = 0
+			sprite.frame = 0
 	pass
 
 func set_aim_dir(dir : Vector2) -> void:

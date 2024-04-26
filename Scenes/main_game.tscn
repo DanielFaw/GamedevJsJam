@@ -1,20 +1,26 @@
-[gd_scene load_steps=6 format=3 uid="uid://bygxk7spn52qh"]
+[gd_scene load_steps=8 format=3 uid="uid://bygxk7spn52qh"]
 
-[ext_resource type="PackedScene" uid="uid://ceecwnqa6g50b" path="res://Prefabs/room_1.tscn" id="1_r5osp"]
+[ext_resource type="Script" path="res://Scripts/main_game.gd" id="1_hxc3m"]
+[ext_resource type="PackedScene" uid="uid://ceecwnqa6g50b" path="res://Prefabs/Rooms/room_full.tscn" id="1_r5osp"]
 [ext_resource type="PackedScene" uid="uid://bbt5hqav8pqp2" path="res://Prefabs/character.tscn" id="2_lntti"]
 [ext_resource type="Script" path="res://Scripts/Utilities/bullet_container.gd" id="4_cbrnk"]
 [ext_resource type="PackedScene" uid="uid://tbx2o6bhmy4j" path="res://Prefabs/game_ui.tscn" id="5_2wtdc"]
 [ext_resource type="PackedScene" uid="uid://br346iwxhtlmd" path="res://Prefabs/basic_enemy.tscn" id="5_f6u5g"]
+[ext_resource type="Script" path="res://Scripts/level_spawner.gd" id="7_r3uue"]
 
 [node name="MainGame" type="Node2D"]
+script = ExtResource("1_hxc3m")
 
-[node name="room1" parent="." instance=ExtResource("1_r5osp")]
-z_index = -1
-position = Vector2(6, -2)
+[node name="Rooms" type="Node2D" parent="."]
+
+[node name="room1" parent="Rooms" instance=ExtResource("1_r5osp")]
+
+[node name="room2" parent="Rooms" instance=ExtResource("1_r5osp")]
+position = Vector2(1, -5120)
+rotation = 3.14159
 
 [node name="Character" parent="." instance=ExtResource("2_lntti")]
-position = Vector2(-562, 30)
-scale = Vector2(0.5, 0.5)
+position = Vector2(-357, -1307)
 floor_max_angle = 1.86227
 
 [node name="BulletContainer" type="Node2D" parent="."]
@@ -32,3 +38,6 @@ position = Vector2(-613, 722)
 
 [node name="BasicEnemy3" parent="." instance=ExtResource("5_f6u5g")]
 position = Vector2(110, 487)
+
+[node name="LevelSpawner" type="Node2D" parent="."]
+script = ExtResource("7_r3uue")

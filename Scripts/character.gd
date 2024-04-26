@@ -1,13 +1,12 @@
 extends CharacterBody2D
 class_name Player
 
-const SPEED := 300.0
-const JUMP_VELOCITY := -400.0
+var speed := 300.0
 @onready var player_anim : PlayerAnimationController = $AnimationController
 @onready var health_comp : HealthComponent = $health_component
 
 @export var arm_cannon : WeaponPresenter
-
+@export var stats : EntityStats
 @export var shoulder_point : Node2D
 @export var fire_point : Node2D
 
@@ -21,16 +20,15 @@ func _init() -> void:
 
 func _ready() -> void:
 	health_comp.took_damage.connect(took_damage)
+	speed *= stats.move_speed
 	pass
 
 func _physics_process(delta : float) -> void:
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	moving = direction != Vector2.ZERO
-	#$WeaponHolder.look_at(position + direction)
+
 	if moving:
-		velocity = direction * SPEED
+		velocity = direction * speed
 	else:
 		velocity = Vector2.ZERO
 	player_anim.move_direction = direction
