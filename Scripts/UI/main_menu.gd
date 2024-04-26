@@ -36,8 +36,9 @@ func _ready() -> void:
 func play_game() -> void:
 	#Fade to black then switch to main game scene?
 	fade_rect.mouse_filter = Control.MOUSE_FILTER_STOP
-	await create_tween().tween_property(fade_rect, "color:a", 1, 1.5).finished
-	SceneManager.change_scene("res://scenes/main_game.tscn")
+	if !OS.is_debug_build():
+		await create_tween().tween_property(fade_rect, "color:a", 1, 1.5).finished
+	SceneManager.change_scene("res://Scenes/main_game.tscn")
 	pass
 
 func show_options() -> void:

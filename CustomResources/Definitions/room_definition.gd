@@ -2,7 +2,7 @@ extends Resource
 class_name RoomDefinition
 
 @export var room : PackedScene
-
+@export var spawn_room := false
 @export var top_door := false
 @export var left_door := false
 @export var right_door := false
